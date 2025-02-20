@@ -8,7 +8,7 @@ const doctorSchema = new mongoose.Schema({
         name: { type: String, required: true }, // Hospital Name
         address: { type: String, required: true }, // Street Address
         area: { type: String, required: true }, // Locality/Area
-        city: { type: String, required: true }, // hi Maggie
+        city: { type: String, required: true }, 
         state: { type: String, required: true }, // State
         pincode: { type: String, required: true } // Pincode/ZIP Code
     },
