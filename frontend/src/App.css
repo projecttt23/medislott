@@ -621,11 +621,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .books-table {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   margin-top: 20px;
   border: 1px solid #EBEDF0;
   border-radius: 12px;
-  overflow-x: auto;
+  overflow: hidden;
   background-color: white;
 }
 
@@ -638,10 +638,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   font-family: "DM Sans", sans-serif;
   align-items: center;
   width: 100%;
-  overflow: scroll;
 }
 
 .books-table-row {
+  overflow: none;
+  background: white;
   color: var(--text-color-primary);
   border-top: 1px solid var(--Greys-B20, #F5F6F7);
 }
@@ -713,7 +714,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin: 0 auto;
 }
 
-.doctor-card {
+.doctor-card-2 {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 20px;
