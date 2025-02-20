@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../App.css'; // Ensure your CSS is applied properly
 
 const DoctorSelection = ({ formData, onDoctorSelect }) => {
   const [doctors, setDoctors] = useState([]);
@@ -13,17 +14,24 @@ const DoctorSelection = ({ formData, onDoctorSelect }) => {
   }, [formData.problem]);
 
   return (
-    <div>
-      <h2>Select Doctor</h2>
-      <ul>
-        {doctors.map((doctor) => (
-          <li key={doctor._id}>
-            <button onClick={() => onDoctorSelect(doctor._id)}>
-              Dr. {doctor.name}
-            </button>
-          </li>
-        ))}
-      </ul>
+    <div className="fs-container">
+      <div className="card">
+        <h2>Select Doctor</h2>
+        <div className="doctor-cards">
+          {doctors.map((doctor) => (
+            <div key={doctor._id} className="doctor-card" onClick={() => onDoctorSelect(doctor._id)}>
+              <div className="doctor-photo">
+                <img src={doctor.photo} alt={doctor.name} />
+              </div>
+              <div className="doctor-info">
+                <h3>Dr. {doctor.name}</h3>
+                <p>Role: {doctor.role}</p>
+                <p>Hospital: {doctor.hospital.name}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

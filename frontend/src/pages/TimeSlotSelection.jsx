@@ -41,71 +41,78 @@ const TimeSlotSelection = ({ onTimeSlotSelect, onConsultationModeSelect, formDat
   const isNextEnabled = selectedTimeSlot && consultationMode;
 
   return (
-    <div>
-      <h2>Select Date and Time Slot</h2>
+    <div className="fs-container">
+      <div className="card">
+        <h2>Select Date and Time Slot</h2>
 
-      {/* Date Picker */}
-      <div>
-        <label>Select Date: </label>
-        <input
-          type="date"
-          value={selectedDate}
-          onChange={handleDateChange}
-        />
-      </div>
+        {/* Date Picker */}
+        <div>
+          <label>Select Date: </label>
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={handleDateChange}
+          />
+        </div>
 
-      {/* Time Slot Selection */}
-      <div>
-        <h3>Available Time Slots</h3>
-        {timeSlots.map((slot, index) => (
-          <div key={index}>
+        {/* Time Slot Selection */}
+        <div>
+          <label style={{ marginTop: '12px' }}>Available Time Slots</label>
+          <div>
+            {timeSlots.map((slot, index) => (
+              <div key={index}>
+                <label>
+                  <input
+                    type="radio"
+                    name="timeSlot"
+                    value={slot.value}
+                    checked={selectedTimeSlot === slot.value}
+                    onChange={handleTimeSlotChange}
+                  />
+                  {slot.label}
+                </label>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Consultation Mode Selection */}
+        <div>
+          <label style={{ marginTop: '16px' }}>Select Consultation Mode</label>
+          <div>
             <label>
               <input
                 type="radio"
-                name="timeSlot"
-                value={slot.value}
-                checked={selectedTimeSlot === slot.value}
-                onChange={handleTimeSlotChange}
+                name="consultationMode"
+                value="Online"
+                checked={consultationMode === 'Online'}
+                onChange={handleConsultationModeChange}
               />
-              {slot.label}
+              Online
+            </label>
+            <label >
+              <input
+                type="radio"
+                name="consultationMode"
+                value="In-person"
+                checked={consultationMode === 'In-person'}
+                onChange={handleConsultationModeChange}
+              />
+              In-person
             </label>
           </div>
-        ))}
-      </div>
+        </div>
 
-      {/* Consultation Mode Selection */}
-      <div>
-        <h3>Select Consultation Mode</h3>
-        <label>
-          <input
-            type="radio"
-            name="consultationMode"
-            value="Online"
-            checked={consultationMode === 'Online'}
-            onChange={handleConsultationModeChange}
-          />
-          Online
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="consultationMode"
-            value="In-person"
-            checked={consultationMode === 'In-person'}
-            onChange={handleConsultationModeChange}
-          />
-          In-person
-        </label>
-      </div>
-
-      {/* Next Button */}
-      <div>
-        <button 
-          onClick={onNext} 
-          disabled={!isNextEnabled}  // Disable if either timeSlot or consultationMode is not selected
-        >
-          Next
-        </button>
+        {/* Next Button */}
+        <div>
+          <button
+            className="primary-button"
+            onClick={onNext}
+            disabled={!isNextEnabled}  // Disable if either timeSlot or consultationMode is not selected
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

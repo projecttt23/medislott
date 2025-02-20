@@ -1,42 +1,773 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+  --primary-color: #63acf1;
+  --primary-gradient-end: #4698e5;
+  --secondary-color: #30343F;
+  --tertiary-color: #DCDCDC;
+  --error-color: #E63946;
+  --optional-color: #6B788E;
+  --text-color-primary: #141A26;
+  --text-color-secondary: #4a4e59;
+  --border-color: #dfe2e6;
+  --border-focus-color: #243757;
+  --placeholder-color: #A0AEC0;
+  --background-light: #ffffff;
+  --background-file-input: #f5f5f7;
+}
+
+/* Prevent horizontal scroll on body */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: "DM Sans", sans-serif;
+  width: 100vw;
+  /* height: 100vh; */
+  background-color: var(--background-light);
+  box-sizing: border-box;
+}
+
+h2{
+  color: var(--text-color-primary);
+  font-size: 32px;
+  font-weight: 800;
+  margin-top: 0;
+}
+
+h3{
+  color: var(--text-color-primary);
+  font-size: 24px;
+  font-weight: 800;
+  margin-top: 0;
+}
+
+p{
+  color: var(--text-color-secondary);
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 0;
+}
+
+
+button {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.fs-container {
+  background: #F5F6F7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.card{
+  background: white;
+  max-width: 50%;
+  min-width: 25%;
+  padding: 32px;
+  border-radius: 24px;
+  max-height: 700px;
+  overflow-y: auto;
+}
+
+.primary-button {
+  font-family: "DM Sans", sans-serif;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--background-light);
+  border: 1px solid #83bcf1;
+  background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-gradient-end) 100%);
+  transition: opacity 0.2s ease-in-out;
+}
+
+.primary-button:hover {
+  opacity: 0.9;
+  border: none;
+}
+
+.primary-button:focus,
+.primary-button:active {
+  outline: none;
+}
+
+.secondary-button {
+  display: flex;
+  padding: 11px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  background: var(--secondary-color);
+  color: var(--background-light);
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.secondary-button:hover {
+  opacity: 0.9;
+}
+
+.secondary-button:focus,
+.secondary-button:active {
+  outline: none;
+}
+
+.tertiary-button {
+  display: flex;
+  padding: 11px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-color-primary);
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  border-radius: 8px;
+  background: var(--tertiary-color);
+  transition: opacity 0.2s ease-in-out;
+}
+
+.tertiary-button:hover {
+  opacity: 0.8;
+}
+
+.tertiary-button:focus,
+.tertiary-button:active {
+  outline: none;
+}
+
+input,
+select,
+textarea {
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif;
+}
+
+.input-text,
+.textarea,
+.dropdown,
+.file-input {
+  background-color: var(--background-light);
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: var(--text-color-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-text:focus,
+.input-text:hover,
+.textarea:focus,
+.textarea:hover,
+.dropdown:focus,
+.dropdown:hover,
+.file-input:focus,
+.file-input:hover {
+  border-color: var(--border-focus-color);
+  box-shadow: 0 0 3px rgba(36, 55, 87, 0.4);
+  outline: none;
+}
+
+.input-text::placeholder,
+.textarea::placeholder,
+.file-input::placeholder {
+  color: var(--placeholder-color);
+}
+
+.dropdown option[value=""][disabled] {
+  color: var(--placeholder-color);
+  font-style: italic;
+}
+
+
+.textarea {
+  resize: none;
+  height: 130px;
+}
+
+.dropdown {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234a4e59' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
+.dropdown option {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  color: var(--text-color-secondary);
+  background-color: var(--background-light);
+}
+
+.file-input {
+  background-color: var(--background-file-input);
+  color: var(--text-color-secondary);
+  cursor: pointer;
+}
+
+.buttons-group {
+  margin-top: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+label {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--border-focus-color);
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* .label {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--border-focus-color);
+  margin-bottom: 0px;
+  margin-top: 12px;
+  display: block;
+} */
+
+.label--error {
+  color: var(--error-color);
+  font-weight: 600;
+}
+
+.label--optional {
+  color: var(--optional-color);
+  font-weight: 400;
+}
+
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Slightly darker background for better focus on the popup */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+input:-webkit-autofill {
+  background-color: white !important;
+  color: #141A26 !important;
+  -webkit-text-fill-color: #141A26 !important;
+  border: 1px solid #dfe2e6 !important;
+  box-shadow: none !important;
+}
+
+input:-webkit-autofill::after {
+  background-color: white !important;
+}
+
+input:focus:-webkit-autofill {
+  background-color: white !important;
+  color: #141A26 !important;
+  -webkit-text-fill-color: #141A26 !important;
+  border: 1px solid #dfe2e6 !important;
+}
+
+input[type="password"]:-webkit-autofill {
+  background-color: white !important;
+  color: #141A26 !important;
+  -webkit-text-fill-color: #141A26 !important;
+  border: 1px solid #dfe2e6 !important;
+}
+
+input[type="email"]:-webkit-autofill {
+  background-color: white !important;
+  color: #141A26 !important;
+  -webkit-text-fill-color: #141A26 !important;
+  border: 1px solid #dfe2e6 !important;
+}
+
+/* Popup Card */
+.popup-card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  width: 600px; /* Ensure this width works responsively or adjust as needed */
+  max-height: 700px;
+  overflow-y: auto;
+  border-radius: 12px;
+  border: 1px solid #ebedf0;
+  background: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Soften the shadow for more subtle depth */
+  gap: 6px; /* Slightly tighter gap to keep related items closer */
+}
+
+/* Popup Heading */
+.popup-heading {
+  font-family: "DM Sans", sans-serif;
+  font-size: 24px;
+  font-weight: bold; /* Use 'bold' for font-weight to ensure consistency across browsers */
+  color: #243757;
+  margin-bottom: 24px; /* Reduced for tighter integration with the form */
+}
+
+/* Global Custom Scrollbar Styling */
+.scrollable-container::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  background-color: transparent; /* Transparent background */
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.0); /* Light shade for the thumb */
+  border-radius: 4px; /* Rounded corners for the thumb */
+  transition: all 0.5s ease;
+}
+
+.scrollable-container:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.4); /* Slightly darker on hover */
+}
+
+.active-tab {
+  background: var(--primary-color);
+  color: var(--background-light);
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: white;
+  color: #A6AEBB;
+  border: none;
+}
+
+.tab.active {
+  background-color: #EEF2FF;
+  color: #312E81;
+  font-weight: 700;
+}
+
+.tab:focus {
+  outline: none;
+}
+
+.swap-link {
+  color: var(--2-colour-themes-Greys-B70, #A6AEBB);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.18px;
+  cursor: pointer;
+  text-align: center;
+  margin-top:10px;
+}
+
+.swap-link {
+  color: var(--2-colour-themes-Greys-B70, #A6AEBB);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.18px;
+  cursor: pointer;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.password-container {
+  position: relative; /* Ensure relative positioning for the eye icon */
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.password-container input {
+  width: 100%; /* Full width input field */
+  padding-right: 40px; /* Add padding to prevent text from overlapping the icon */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.eye-icon {
+  position: absolute;
+  right: 16px; /* Align with padding */
+  top: 45%; /* Center vertically */
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #4C505A;
+  font-size: 18px;
+  cursor: pointer;
 }
 
-.card {
-  padding: 2em;
+.eye-icon:hover {
+  color: var(--text-color-primary); /* Change color on hover for better feedback */
 }
 
-.read-the-docs {
-  color: #888;
+.doctor-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: top;
+  max-height: 500px;  /* Limit the height of the container */
+  overflow-y: auto;   /* Enable scrolling */
+  width: 100%;
+}
+
+.doctor-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 100%;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: border 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.doctor-card:hover {
+  border: 1px solid var(--border-focus-color);
+}
+
+/* Minimal Scrollbar */
+.doctor-cards::-webkit-scrollbar {
+  width: 4px; /* Smaller width for a more subtle scrollbar */
+  background-color: transparent; /* Transparent background */
+  display: none;
+}
+
+.doctor-cards::-webkit-scrollbar-thumb {
+  display: block;
+  background-color: rgba(128, 128, 128, 0.2); /* Lighter shade for the thumb */
+  border-radius: 2px; /* Rounded corners for the thumb */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.doctor-cards::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(128, 128, 128, 0.5); /* Slightly darker thumb on hover */
+}
+
+.doctor-photo {
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.doctor-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.doctor-info {
+  color: var(--text-color-secondary);
+}
+
+.doctor-info h3 {
+  color: var(--text-color-primary);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.doctor-info p {
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+
+/* Input and Date Picker */
+input[type="date"] {
+  background-color: var(--background-light);
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: var(--text-color-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="date"]:focus,
+input[type="date"]:hover {
+  border-color: var(--border-focus-color);
+  box-shadow: 0 0 3px rgba(36, 55, 87, 0.4);
+  outline: none;
+}
+
+input[type="date"]::placeholder {
+  color: var(--placeholder-color);
+}
+
+
+/* General styles for the radio button group */
+input[type="radio"] {
+  margin-right: 8px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: brightness(0) saturate(100%) invert(25%) sepia(3%) saturate(350%) hue-rotate(180deg) contrast(85%) brightness(125%);
+  cursor: pointer;
+}
+
+
+.appointment-summary {
+  margin-bottom: 24px;
+  width: 100%;
+  color: var(--text-color-secondary);
+  font-size: 16px;
+}
+
+.appointment-summary p {
+  margin: 8px 0;
+}
+
+.appointment-summary strong {
+  color: var(--text-color-primary);
+}
+
+
+.form-group-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;  /* You can adjust this gap */
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.input-group label {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--border-focus-color);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid var(--border-color);
+  font-size: 16px;
+  color: var(--text-color-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus,
+.input-group input:hover {
+  border-color: var(--border-focus-color);
+  box-shadow: 0 0 3px rgba(36, 55, 87, 0.4);
+  outline: none;
+}
+
+
+.appointments-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width:100vw;
+  height: 100vh;;
+  overflow: hidden;
+}
+
+/* Table Styles */
+.books-table {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+  border: 1px solid #EBEDF0;
+  border-radius: 12px;
+  overflow-x: auto;
+  background-color: white;
+}
+
+/* Header and Row Styles */
+.books-table-header, .books-table-row {
+  display: flex;
+  padding: 12px 16px;
+  gap: 16px;
+  font-size: 14px;
+  font-family: "DM Sans", sans-serif;
+  align-items: center;
+  width: 100%;
+  overflow: scroll;
+}
+
+.books-table-row {
+  color: var(--text-color-primary);
+  border-top: 1px solid var(--Greys-B20, #F5F6F7);
+}
+
+.books-table-header {
+  background: #F5F6F7;
+  font-weight: 600;
+  color: #354764;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+/* Specific column widths */
+.books-table-header div {
+  flex: 1;
+  min-width: 120px;
+}
+
+.books-table-row div {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* Padding and styling adjustments */
+.books-table-row {
+  padding: 12px 16px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.books-table-header div {
+  font-weight: bold;
+}
+
+/* Logout Button Styling */
+.logout-button {
+  font-family: "DM Sans", sans-serif;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--background-light);
+  background: linear-gradient(180deg, var(--error-color) 0%, var(--error-color) 100%);
+  transition: opacity 0.2s ease-in-out;
+  margin-top: 24px;
+}
+
+.primary-button:hover {
+  opacity: 0.9;
+}
+
+.primary-button:focus,
+.primary-button:active {
+  outline: none;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Doctor List Styles */
+.doctor-list {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.doctor-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.profile-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f4f4f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  overflow: hidden;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-logo {
+  font-size: 24px;
+}
+
+.doctor-details p {
+  margin: 5px 0;
+  color: #555;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+  width: auto;
+}
+
+button:hover {
+  background-color: #2980b9;
 }

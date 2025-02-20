@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../App.css'; // Make sure your CSS is applied properly
 
 const AppointmentForm = ({ onFormSubmit }) => {
   const [formData, setFormData] = useState({
@@ -28,43 +29,88 @@ const AppointmentForm = ({ onFormSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Full Name:</label>
-        <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required />
+    <div className="fs-container">
+      <div className="card scrollable-container">
+        <h2>Appointment Form</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Full Name:</label>
+            <input
+              className="input-text"
+              type="text"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Age:</label>
+            <input
+              className="input-text"
+              type="number"
+              name="age"
+              value={formData.age}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Gender:</label>
+            <select
+              className="dropdown"
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Phone Number:</label>
+            <input
+              className="input-text"
+              type="tel"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Email:</label>
+            <input
+              className="input-text"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Problem:</label>
+            <select
+              className="dropdown"
+              name="problem"
+              value={formData.problem}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select Problem</option>
+              {problems.map((problem) => (
+                <option key={problem} value={problem}>{problem}</option>
+              ))}
+            </select>
+          </div>
+          <button className="primary-button" type="submit">Next</button>
+        </form>
       </div>
-      <div>
-        <label>Age:</label>
-        <input type="number" name="age" value={formData.age} onChange={handleChange} required />
-      </div>
-      <div>
-        <label>Gender:</label>
-        <select name="gender" value={formData.gender} onChange={handleChange} required>
-          <option value="">Select Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-      <div>
-        <label>Phone Number:</label>
-        <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-      </div>
-      <div>
-        <label>Problem:</label>
-        <select name="problem" value={formData.problem} onChange={handleChange} required>
-          <option value="">Select Problem</option>
-          {problems.map((problem) => (
-            <option key={problem} value={problem}>{problem}</option>
-          ))}
-        </select>
-      </div>
-      <button type="submit">Next</button>
-    </form>
+    </div>
   );
 };
 
