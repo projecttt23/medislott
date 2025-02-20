@@ -17,7 +17,7 @@ const AppointmentSchema = new mongoose.Schema({
     ],
   },
   doctor: { type: mongoose.Schema.Types.ObjectId, ref: "Doctor", required: true },
-  date: { type: Date, required: true },  // Only the date, no time
+  date: { type: String, required: true },  // Only the date, no time
   timeSlot: {
     startTime: { type: String, required: true },  // Store as Date (but only time part)
     endTime: { type: String, required: true }

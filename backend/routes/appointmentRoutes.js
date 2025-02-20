@@ -12,6 +12,7 @@ const url = 'https://api.brevo.com/v3/smtp/email'; // Brevo SMTP API endpoint
 // 📌 1️⃣ Book an Appointment
 router.post("/book", async (req, res) => {
   try {
+    console.log(req.body);
     const { fullName, age, gender, phoneNumber, email, doctorId, date, timeSlot, consultationMode, problem } = req.body;
 
     // Check if doctor exists
