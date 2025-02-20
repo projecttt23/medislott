@@ -10,7 +10,7 @@ const SECRET_KEY = process.env.JWT_SECRET || "supersecretkey123"; // Change in p
 // 📌 1️⃣ Register a Doctor  
 router.post("/register", async (req, res) => {
   try {
-    const { name, role, email, password, hospital, photo } = req.body;
+    const { name, role, email, password, hospital, photo, keywords } = req.body;
 
     // Check if doctor already exists
     const existingDoctor = await Doctor.findOne({ email });
@@ -26,7 +26,8 @@ router.post("/register", async (req, res) => {
       email,
       password: hashedPassword,
       hospital,
-      photo
+      photo,
+      keywords,
     });
 
     await newDoctor.save();

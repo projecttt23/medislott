@@ -15,7 +15,8 @@ const doctorSchema = new mongoose.Schema({
 
     photo: { type: String }, // Optional Photo URL
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    keywords: { type: [String], required: true } 
 }, { timestamps: true });
 
 module.exports = mongoose.model("Doctor", doctorSchema);
