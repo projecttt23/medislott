@@ -78,7 +78,7 @@ router.post("/book", async (req, res) => {
     const response = await axios.post(url, emailData, {
       headers: {
         'Content-Type': 'application/json',
-        'api-Key': apiKey,  // Replace with your API key
+        'api-Key': apiKey, 
       }
     });
 

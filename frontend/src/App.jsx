@@ -5,14 +5,17 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AppointmentsPage from './pages/AppointmentsPage';
 import DoctorList from './pages/DoctorList';
+import HomePage from './pages/HomePage'
 import "../src/App.css";
 
 const App = () => {
   return (
     <Router>
+      
       <Routes>
         {/* Add Route for Home */}
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/form" element={<Home />} />
 
         {/* Routes for Login, Register, Appointments */}
         <Route path="/login" element={<LoginPage />} />
