@@ -29,9 +29,9 @@ const DoctorList = () => {
       <h1>List of Doctors</h1>
       {doctors.length > 0 ? (
         doctors.map((doctor) => (
-          <div key={doctor._id} className="doctor-card-2">
+          <div key={doctor._id} className="doctor-card">
             <div className="doctor-header">
-              {/* Profile Photo/Logo */}
+            
               <div className="profile-photo">
                 {doctor.photo ? (
                   <img src={doctor.photo} alt={`${doctor.name}'s profile`} />
@@ -40,16 +40,16 @@ const DoctorList = () => {
                 )}
               </div>
               <h3>{doctor.name}</h3>
-              <p style={{marginLeft:'12px'}}><strong>Role:</strong> {doctor.role}</p>
+              <p><strong>Role:</strong> {doctor.role}</p>
             </div>
             <div className="doctor-details">
               <p><strong>Hospital:</strong> {doctor.hospital.name}</p>
               <p><strong>Location:</strong> {doctor.hospital.address}, {doctor.hospital.city}, {doctor.hospital.state}</p>
               <p><strong>Specializations:</strong> {doctor.keywords.join(", ")}</p>
             </div>
-            {/* <button onClick={() => handleBookAppointment(doctor._id)}>
+            <button onClick={() => handleBookAppointment(doctor._id)}>
               Book Appointment
-            </button> */}
+            </button>
           </div>
         ))
       ) : (
